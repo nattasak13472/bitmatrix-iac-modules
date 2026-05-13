@@ -9,7 +9,7 @@ resource "aws_subnet" "public" {
   tags = merge(
     var.common_tags,
     {
-      Name = "${local.name_prefix}-public-${count.index + 1}"
+      Name = "${local.name_prefix}-pub-${count.index + 1}"
       Tier = "Public"
     }
   )
@@ -25,7 +25,7 @@ resource "aws_subnet" "private_app" {
   tags = merge(
     var.common_tags,
     {
-      Name = "${local.name_prefix}-private-app-${count.index + 1}"
+      Name = "${local.name_prefix}-pri-app-${count.index + 1}"
       Tier = "Private-App"
     }
   )
@@ -41,7 +41,7 @@ resource "aws_subnet" "private_db" {
   tags = merge(
     var.common_tags,
     {
-      Name = "${local.name_prefix}-private-db-${count.index + 1}"
+      Name = "${local.name_prefix}-pri-db-${count.index + 1}"
       Tier = "Private-DB"
     }
   )
