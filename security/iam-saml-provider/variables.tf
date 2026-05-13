@@ -1,4 +1,4 @@
-variable "name" {
+variable "resource_name" {
   description = "The name of the SAML provider"
   type        = string
 }

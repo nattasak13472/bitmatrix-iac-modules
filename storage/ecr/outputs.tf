@@ -8,7 +8,7 @@ output "repository_url" {
   value       = aws_ecr_repository.this.repository_url
 }
 
-output "repository_name" {
+output "resource_name" {
   description = "The name of the repository"
   value       = aws_ecr_repository.this.name
 }

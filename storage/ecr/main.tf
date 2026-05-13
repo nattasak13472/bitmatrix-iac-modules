@@ -1,6 +1,6 @@
 # 1. Core Repository
 resource "aws_ecr_repository" "this" {
-  name                 = "${var.project}-${var.environment}-${var.repository_name}"
+  name                 = "${var.project}-${var.environment}-${var.resource_name}"
   image_tag_mutability = var.image_tag_mutability
 
   image_scanning_configuration {
@@ -15,7 +15,7 @@ resource "aws_ecr_repository" "this" {
   tags = merge(
     var.common_tags,
     {
-      Name = "${var.project}-${var.environment}-${var.repository_name}"
+      Name = "${var.project}-${var.environment}-${var.resource_name}"
     }
   )
 }

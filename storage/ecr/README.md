@@ -13,7 +13,7 @@ module "laravel_app_repo" {
 
   project         = "bitmatrix"
   environment     = "prod"
-  repository_name = "laravel-api"
+  resource_name = "laravel-api"
   
   # Defaults applied:
   # - image_tag_mutability = "IMMUTABLE"
@@ -40,7 +40,7 @@ module "secure_auth_repo" {
 
   project         = "bitmatrix"
   environment     = "prod"
-  repository_name = "auth-service"
+  resource_name = "auth-service"
   
   kms_key_arn = module.ecr_kms.key_arn
 }
@@ -55,7 +55,7 @@ module "dev_sandbox_repo" {
 
   project         = "bitmatrix"
   environment     = "dev"
-  repository_name = "sandbox-api"
+  resource_name = "sandbox-api"
   
   image_tag_mutability = "MUTABLE" # Allows overwriting tags like 'latest'
   keep_last_n_images   = 5         # Aggressively delete old images in dev

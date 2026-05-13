@@ -10,7 +10,7 @@ This role is required for EC2 instances to register as container instances in an
 ```hcl
 module "ecs_node_role" {
   source    = "../../security/iam-role"
-  role_name = "ecs-container-instance-role"
+  resource_name = "ecs-container-instance-role"
 
   # Trust Policy (Who can assume this role?)
   assume_role_policy = jsonencode({
@@ -40,7 +40,7 @@ This role is intended for users who authenticate via Google SSO and need to assu
 ```hcl
 module "developer_role" {
   source    = "../../security/iam-role"
-  role_name = "google-sso-developer"
+  resource_name = "google-sso-developer"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"

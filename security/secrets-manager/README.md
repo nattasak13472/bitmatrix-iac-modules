@@ -14,7 +14,7 @@ module "external_api_token" {
   source      = "../../security/secrets-manager"
   project     = "bitmatrix"
   environment = "prod"
-  secret_name = "stripe-api-key"
+  resource_name = "stripe-api-key"
   description = "Production API key for Stripe integration"
 }
 ```
@@ -47,7 +47,7 @@ module "service_secret" {
   source        = "../../security/secrets-manager"
   project       = "bitmatrix"
   environment   = "prod"
-  secret_name   = "internal-service-pwd"
+  resource_name   = "internal-service-pwd"
   secret_string = random_password.service_user.result
 }
 ```
@@ -60,7 +60,7 @@ module "app_config" {
   source      = "../../security/secrets-manager"
   project     = "bitmatrix"
   environment = "prod"
-  secret_name = "app-config"
+  resource_name = "app-config"
   
   secret_string = jsonencode({
     db_host = "rds.internal"

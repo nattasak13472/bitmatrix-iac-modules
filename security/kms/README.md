@@ -58,7 +58,7 @@ module "secrets_kms" {
 # Example integration with Secrets Manager module
 module "api_secret" {
   source     = "../../security/secrets-manager"
-  secret_name = "app-api-key"
+  resource_name = "app-api-key"
   kms_key_id  = module.secrets_kms.key_arn
 }
 ```

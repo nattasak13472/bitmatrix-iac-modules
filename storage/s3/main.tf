@@ -1,12 +1,12 @@
 # 1. Core Bucket
 resource "aws_s3_bucket" "this" {
-  bucket        = "${var.project}-${var.environment}-${var.bucket_name}"
+  bucket        = "${var.project}-${var.environment}-${var.resource_name}"
   force_destroy = var.force_destroy
 
   tags = merge(
     var.common_tags,
     {
-      Name = "${var.project}-${var.environment}-${var.bucket_name}"
+      Name = "${var.project}-${var.environment}-${var.resource_name}"
     }
   )
 }

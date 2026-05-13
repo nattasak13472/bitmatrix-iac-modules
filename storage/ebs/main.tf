@@ -8,7 +8,7 @@ resource "aws_ebs_volume" "this" {
   tags = merge(
     var.common_tags,
     {
-      Name = "${var.project}-${var.environment}-${var.volume_name}"
+      Name = "${var.project}-${var.environment}-${var.resource_name}"
     }
   )
 }

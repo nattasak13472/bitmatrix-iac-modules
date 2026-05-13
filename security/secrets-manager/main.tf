@@ -1,5 +1,5 @@
 resource "aws_secretsmanager_secret" "this" {
-  name        = "${var.project}/${var.environment}/${var.secret_name}"
+  name        = "${var.project}/${var.environment}/${var.resource_name}"
   description = var.description
   kms_key_id  = var.kms_key_id
 

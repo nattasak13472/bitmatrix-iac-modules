@@ -8,7 +8,7 @@ variable "environment" {
   type        = string
 }
 
-variable "bucket_name" {
+variable "resource_name" {
   description = "The name of the bucket. If omitted, Terraform will assign a random, unique name."
   type        = string
 }

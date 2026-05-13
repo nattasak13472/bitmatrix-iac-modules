@@ -8,7 +8,7 @@ output "secret_id" {
   value       = aws_secretsmanager_secret.this.id
 }
 
-output "secret_name" {
+output "resource_name" {
   description = "The name of the secret"
   value       = aws_secretsmanager_secret.this.name
 }

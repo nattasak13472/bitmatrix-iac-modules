@@ -13,7 +13,7 @@ module "app_assets" {
 
   project     = "bitmatrix"
   environment = "prod"
-  bucket_name = "app-assets"
+  resource_name = "app-assets"
   
   # Defaults:
   # - Block all public access: TRUE
@@ -40,7 +40,7 @@ module "secure_backups" {
 
   project     = "bitmatrix"
   environment = "prod"
-  bucket_name = "db-backups"
+  resource_name = "db-backups"
   
   enable_versioning = true
   kms_key_arn       = module.backup_kms.key_arn
@@ -56,7 +56,7 @@ module "audit_logs" {
 
   project     = "bitmatrix"
   environment = "prod"
-  bucket_name = "audit-logs"
+  resource_name = "audit-logs"
   
   lifecycle_rules = [
     {

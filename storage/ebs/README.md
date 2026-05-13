@@ -26,7 +26,7 @@ module "runner_data_disk" {
 
   project           = "bitmatrix"
   environment       = "prod"
-  volume_name       = "runner-data"
+  resource_name       = "runner-data"
   availability_zone = module.gitlab_runner.availability_zone
   
   size = 100 # 100 GB

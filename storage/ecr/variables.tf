@@ -8,7 +8,7 @@ variable "environment" {
   type        = string
 }
 
-variable "repository_name" {
+variable "resource_name" {
   description = "The name of the ECR repository"
   type        = string
 }
