@@ -1,6 +1,6 @@
 # 1. Launch Template
 resource "aws_launch_template" "this" {
-  name_prefix   = "${var.project}-${var.environment}-${var.name_suffix}-lt-"
+  name_prefix   = "${var.project}-${var.environment}-${var.resource_name}-lt-"
   image_id      = var.ami_id
   instance_type = var.instance_type
   key_name      = var.key_name
@@ -23,7 +23,7 @@ resource "aws_launch_template" "this" {
     tags = merge(
       var.common_tags,
       {
-        Name = "${var.project}-${var.environment}-${var.name_suffix}-node"
+        Name = "${var.project}-${var.environment}-${var.resource_name}-node"
       }
     )
   }
@@ -35,7 +35,7 @@ resource "aws_launch_template" "this" {
 
 # 2. Auto Scaling Group
 resource "aws_autoscaling_group" "this" {
-  name_prefix         = "${var.project}-${var.environment}-${var.name_suffix}-asg-"
+  name_prefix         = "${var.project}-${var.environment}-${var.resource_name}-asg-"
   vpc_zone_identifier = var.subnet_ids
   min_size            = var.min_size
   max_size            = var.max_size
@@ -59,7 +59,7 @@ resource "aws_autoscaling_group" "this" {
 
 # 3. Capacity Provider
 resource "aws_ecs_capacity_provider" "this" {
-  name = "${var.project}-${var.environment}-${var.name_suffix}-cp"
+  name = "${var.project}-${var.environment}-${var.resource_name}-cp"
 
   auto_scaling_group_provider {
     auto_scaling_group_arn         = aws_autoscaling_group.this.arn

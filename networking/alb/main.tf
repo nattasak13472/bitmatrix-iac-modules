@@ -1,5 +1,5 @@
 resource "aws_lb" "this" {
-  name               = "${var.project}-${var.environment}-${var.alb_name}"
+  name               = "${var.project}-${var.environment}-${var.resource_name}"
   internal           = var.internal
   load_balancer_type = "application"
   security_groups    = var.security_groups
@@ -10,8 +10,7 @@ resource "aws_lb" "this" {
   tags = merge(
     var.common_tags,
     {
-      Name        = "${var.project}-${var.environment}-${var.alb_name}"
-      Environment = var.environment
+      Name = "${var.project}-${var.environment}-${var.resource_name}"
     }
   )
 }

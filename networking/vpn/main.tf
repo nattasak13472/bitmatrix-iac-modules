@@ -18,7 +18,7 @@ resource "aws_ec2_client_vpn_endpoint" "this" {
   }
 
   tags = merge(
-    local.common_tags,
+    var.common_tags,
     {
       Name = "${local.name_prefix}-vpn"
     }

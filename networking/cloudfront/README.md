@@ -19,9 +19,10 @@ module "internal_alb" {
 module "cdn" {
   source = "../../networking/cloudfront"
 
-  project            = "bitmatrix"
-  environment        = "nonprod"
-  domain_name        = "app.bitmatrix.com"
+  project       = "bitmatrix"
+  environment   = "nonprod"
+  domain_name   = "app.bitmatrix.com"
+  resource_name = "app"
   
   # Point to the ALB DNS name
   origin_domain_name = module.internal_alb.alb_dns_name

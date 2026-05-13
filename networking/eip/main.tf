@@ -1,11 +1,11 @@
 resource "aws_eip" "nat" {
-  count  = length(var.availability_zones)
+
   domain = "vpc"
 
   tags = merge(
-    local.common_tags,
+    var.common_tags,
     {
-      Name = "${local.name_prefix}-nat-eip-${count.index + 1}"
+      Name = "${local.name_prefix}-eip-${var.resource_name}"
     }
   )
 }

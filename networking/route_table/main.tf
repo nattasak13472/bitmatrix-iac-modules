@@ -8,7 +8,7 @@ resource "aws_route_table" "public" {
   }
 
   tags = merge(
-    local.common_tags,
+    var.common_tags,
     {
       Name = "${local.name_prefix}-rt-public"
     }
@@ -28,11 +28,11 @@ resource "aws_route_table" "private" {
 
   route {
     cidr_block     = "0.0.0.0/0"
-    nat_gateway_id = var.nat_gateway_ids[count.index]
+    nat_gateway_id = var.single_nat_gateway ? var.nat_gateway_ids[0] : var.nat_gateway_ids[count.index]
   }
 
   tags = merge(
-    local.common_tags,
+    var.common_tags,
     {
       Name = "${local.name_prefix}-rt-private-${count.index + 1}"
     }

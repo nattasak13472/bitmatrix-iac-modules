@@ -11,8 +11,7 @@ resource "aws_route53_zone" "this" {
   tags = merge(
     var.common_tags,
     {
-      Name        = "${var.project}-${var.environment}-${var.domain_name}"
-      Environment = var.environment
+      Name = "${var.project}-${var.environment}-${var.domain_name}"
     }
   )
 }

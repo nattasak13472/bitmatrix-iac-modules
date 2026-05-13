@@ -43,10 +43,10 @@ resource "aws_iam_instance_profile" "ecs_node_profile" {
 module "on_demand_compute" {
   source = "../../compute/ecs-capacity-provider-ec2"
 
-  project      = "bitmatrix"
-  environment  = "nonprod"
-  name_suffix  = "on-demand"
-  cluster_name = module.my_cluster.cluster_name
+  project       = "bitmatrix"
+  environment   = "nonprod"
+  resource_name = "on-demand"
+  cluster_name  = module.my_cluster.cluster_name
   
   # Compute Config
   instance_type             = "t3.medium"

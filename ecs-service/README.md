@@ -13,7 +13,7 @@ module "app_alb" {
   source          = "../../networking/alb"
   project         = "bitmatrix"
   environment     = "prod"
-  alb_name        = "public-api"
+  resource_name        = "public-api"
   internal        = false
   security_groups = [module.alb_sg.id]
   subnet_ids      = module.vpc.public_subnets
@@ -36,10 +36,10 @@ resource "aws_lb_target_group" "laravel_api" {
 module "laravel_app" {
   source = "../../ecs-service"
 
-  project     = "bitmatrix"
-  environment = "prod"
-  name        = "laravel-api"
-  cluster_id  = module.ecs_cluster.cluster_id
+  project       = "bitmatrix"
+  environment   = "prod"
+  resource_name = "laravel-api"
+  cluster_id    = module.ecs_cluster.cluster_id
 
   # Scheduling Strategy (Default is REPLICA)
   desired_count = 3
@@ -96,7 +96,7 @@ module "internal_alb" {
   source          = "../../networking/alb"
   project         = "bitmatrix"
   environment     = "prod"
-  alb_name        = "private-api"
+  resource_name        = "private-api"
   internal        = true # KEY: Not accessible from the public internet
   security_groups = [module.internal_alb_sg.id]
   subnet_ids      = module.vpc.private_subnets
@@ -127,7 +127,7 @@ module "secure_api_service" {
 
   project     = "bitmatrix"
   environment = "prod"
-  name        = "secure-api"
+  resource_name = "secure-api"
   cluster_id  = module.ecs_cluster.cluster_id
   
   target_group_arn   = aws_lb_target_group.api_tg.arn
@@ -156,7 +156,7 @@ module "wazuh_agent" {
 
   project     = "bitmatrix"
   environment = "prod"
-  name        = "wazuh-agent"
+  resource_name = "wazuh-agent"
   cluster_id  = module.ecs_cluster.cluster_id
 
   # Scheduling Strategy

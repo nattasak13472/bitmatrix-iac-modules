@@ -13,7 +13,7 @@ module "gitlab_runner" {
 
   project       = "bitmatrix"
   environment   = "nonprod"
-  instance_name = "gitlab-runner-01"
+  resource_name = "gitlab-runner-01"
   ami_id        = "ami-0123456789abcdef0" # Ubuntu 22.04
   instance_type = "t3.medium"
   subnet_id     = module.vpc.private_subnets[0]
@@ -37,7 +37,7 @@ module "monitoring_node" {
 
   project       = "bitmatrix"
   environment   = "nonprod"
-  instance_name = "monitoring-stack"
+  resource_name = "monitoring-stack"
   ami_id        = "ami-0123456789abcdef0"
   instance_type = "t3.large" 
   subnet_id     = module.vpc.private_subnets[1]

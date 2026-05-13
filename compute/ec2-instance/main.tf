@@ -17,7 +17,7 @@ resource "aws_instance" "this" {
     tags = merge(
       var.common_tags,
       {
-        Name = "${var.project}-${var.environment}-${var.instance_name}-root"
+        Name = "${var.project}-${var.environment}-${var.resource_name}-root"
       }
     )
   }
@@ -25,8 +25,7 @@ resource "aws_instance" "this" {
   tags = merge(
     var.common_tags,
     {
-      Name        = "${var.project}-${var.environment}-${var.instance_name}"
-      Environment = var.environment
+      Name = "${var.project}-${var.environment}-${var.resource_name}"
     }
   )
 

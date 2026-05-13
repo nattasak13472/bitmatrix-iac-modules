@@ -13,14 +13,13 @@ variable "region" {
   type        = string
 }
 
-variable "availability_zones" {
-  description = "List of availability zones"
-  type        = list(string)
-  default     = ["ap-southeast-1a", "ap-southeast-1b", "ap-southeast-1c"]
-}
-
 variable "common_tags" {
   description = "Common tags"
   type        = map(string)
   default     = {}
+}
+
+variable "resource_name" {
+  description = "Resource Name"
+  type        = string
 }

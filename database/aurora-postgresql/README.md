@@ -13,7 +13,7 @@ module "db" {
 
   project         = "bitmatrix"
   environment     = "nonprod"
-  name            = "app-db"
+  resource_name   = "app-db"
   vpc_id          = module.vpc.vpc_id
   subnet_ids      = module.vpc.private_subnets
   security_group_ids = [module.db_sg.id]
@@ -56,7 +56,7 @@ module "primary_db" {
 
   project                   = "bitmatrix"
   environment               = "prod"
-  name                      = "prod-primary"
+  resource_name             = "prod-primary"
   global_cluster_identifier = aws_rds_global_cluster.main.id
   is_primary_cluster        = true
   
@@ -73,7 +73,7 @@ module "secondary_db" {
 
   project                   = "bitmatrix"
   environment               = "prod"
-  name                      = "prod-secondary"
+  resource_name             = "prod-secondary"
   global_cluster_identifier = "bitmatrix-global-db" # Match the ID above
   is_primary_cluster        = false
   

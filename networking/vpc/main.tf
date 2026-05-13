@@ -4,7 +4,7 @@ resource "aws_vpc" "this" {
   enable_dns_support   = true
 
   tags = merge(
-    local.common_tags,
+    var.common_tags,
     {
       Name = local.name_prefix
     }

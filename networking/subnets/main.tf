@@ -7,7 +7,7 @@ resource "aws_subnet" "public" {
   map_public_ip_on_launch = true
 
   tags = merge(
-    local.common_tags,
+    var.common_tags,
     {
       Name = "${local.name_prefix}-public-${count.index + 1}"
       Tier = "Public"
@@ -23,7 +23,7 @@ resource "aws_subnet" "private_app" {
   availability_zone = var.availability_zones[count.index]
 
   tags = merge(
-    local.common_tags,
+    var.common_tags,
     {
       Name = "${local.name_prefix}-private-app-${count.index + 1}"
       Tier = "Private-App"
@@ -39,7 +39,7 @@ resource "aws_subnet" "private_db" {
   availability_zone = var.availability_zones[count.index]
 
   tags = merge(
-    local.common_tags,
+    var.common_tags,
     {
       Name = "${local.name_prefix}-private-db-${count.index + 1}"
       Tier = "Private-DB"

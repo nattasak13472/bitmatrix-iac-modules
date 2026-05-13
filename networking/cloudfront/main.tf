@@ -51,8 +51,7 @@ resource "aws_cloudfront_distribution" "this" {
   tags = merge(
     var.common_tags,
     {
-      Name        = "${var.project}-${var.environment}-cf"
-      Environment = var.environment
+      Name = "${var.project}-${var.environment}-cf-${var.resource_name}"
     }
   )
 }

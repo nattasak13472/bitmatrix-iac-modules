@@ -8,7 +8,7 @@ variable "environment" {
   type        = string
 }
 
-variable "alb_name" {
+variable "resource_name" {
   description = "Name of the ALB"
   type        = string
 }

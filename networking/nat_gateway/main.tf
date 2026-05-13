@@ -1,10 +1,10 @@
 resource "aws_nat_gateway" "this" {
-  count         = length(var.availability_zones)
+  count         = var.single_nat_gateway ? 1 : length(var.availability_zones)
   allocation_id = var.eip_allocation_ids[count.index]
   subnet_id     = var.public_subnet_ids[count.index]
 
   tags = merge(
-    local.common_tags,
+    var.common_tags,
     {
       Name = "${local.name_prefix}-nat-${count.index + 1}"
     }

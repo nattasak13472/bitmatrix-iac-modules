@@ -14,7 +14,7 @@ module "public_alb" {
   
   project         = "bitmatrix"
   environment     = "nonprod"
-  alb_name        = "public-app"
+  resource_name        = "public-app"
   security_groups = [module.alb_sg.id]
   subnet_ids      = module.vpc.public_subnets
 }
@@ -50,7 +50,7 @@ module "private_alb" {
   
   project         = "bitmatrix"
   environment     = "nonprod"
-  alb_name        = "internal-api"
+  resource_name        = "internal-api"
   security_groups = [module.internal_sg.id]
   subnet_ids      = module.vpc.private_subnets
 }

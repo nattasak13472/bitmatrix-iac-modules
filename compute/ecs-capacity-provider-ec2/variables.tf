@@ -8,7 +8,7 @@ variable "environment" {
   type        = string
 }
 
-variable "name_suffix" {
+variable "resource_name" {
   description = "A suffix to differentiate multiple capacity providers in the same cluster"
   type        = string
 }

@@ -1,6 +1,6 @@
 # 1. Subnet Group
 resource "aws_db_subnet_group" "this" {
-  name       = "${var.project}-${var.environment}-${var.name}-subnet-group"
+  name       = "${var.project}-${var.environment}-${var.resource_name}-subnet-group"
   subnet_ids = var.subnet_ids
 
   tags = var.common_tags
@@ -8,7 +8,7 @@ resource "aws_db_subnet_group" "this" {
 
 # 2. Aurora Cluster
 resource "aws_rds_cluster" "this" {
-  cluster_identifier = "${var.project}-${var.environment}-${var.name}"
+  cluster_identifier = "${var.project}-${var.environment}-${var.resource_name}"
   engine             = "aurora-postgresql"
   engine_version     = var.engine_version
   database_name      = var.is_primary_cluster ? var.database_name : null
@@ -38,7 +38,7 @@ resource "aws_rds_cluster" "this" {
 resource "aws_rds_cluster_instance" "this" {
   count = var.instance_count
 
-  identifier         = "${var.project}-${var.environment}-${var.name}-${count.index}"
+  identifier         = "${var.project}-${var.environment}-${var.resource_name}-${count.index}"
   cluster_identifier = aws_rds_cluster.this.id
   instance_class     = var.instance_class
   engine             = aws_rds_cluster.this.engine

@@ -1,5 +1,5 @@
 resource "aws_ecs_task_definition" "this" {
-  family                   = "${var.project}-${var.environment}-${var.name}"
+  family                   = "${var.project}-${var.environment}-${var.resource_name}"
   container_definitions    = var.container_definitions
   network_mode             = var.network_mode
   requires_compatibilities = ["EC2"]
@@ -20,14 +20,14 @@ resource "aws_ecs_task_definition" "this" {
   tags = merge(
     var.common_tags,
     {
-      Name = "${var.project}-${var.environment}-${var.name}-task"
+      Name = "${var.project}-${var.environment}-${var.resource_name}-task"
     }
   )
 }
 
 
 resource "aws_ecs_service" "this" {
-  name                = "${var.project}-${var.environment}-${var.name}-svc"
+  name                = "${var.project}-${var.environment}-${var.resource_name}-svc"
   cluster             = var.cluster_id
   task_definition     = aws_ecs_task_definition.this.arn
   scheduling_strategy = var.scheduling_strategy
@@ -48,7 +48,7 @@ resource "aws_ecs_service" "this" {
   tags = merge(
     var.common_tags,
     {
-      Name = "${var.project}-${var.environment}-${var.name}-svc"
+      Name = "${var.project}-${var.environment}-${var.resource_name}-svc"
     }
   )
 

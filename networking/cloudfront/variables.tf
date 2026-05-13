@@ -34,3 +34,8 @@ variable "common_tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "resource_name" {
+  description = "Resource name"
+  type        = string
+}
