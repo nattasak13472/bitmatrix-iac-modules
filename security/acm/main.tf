@@ -1,6 +1,7 @@
 resource "aws_acm_certificate" "this" {
-  domain_name       = var.domain_name
-  validation_method = var.domain_name != null ? var.validation_method : null
+  domain_name               = var.domain_name
+  subject_alternative_names = var.subject_alternative_names
+  validation_method         = var.domain_name != null ? var.validation_method : null
 
   certificate_body  = var.certificate_body
   private_key       = var.private_key

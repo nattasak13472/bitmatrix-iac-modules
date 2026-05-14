@@ -2,9 +2,9 @@ resource "aws_route53_zone" "this" {
   name = var.domain_name
 
   dynamic "vpc" {
-    for_each = var.is_private_zone && var.vpc_id != null ? [1] : []
+    for_each = var.is_private_zone ? toset(var.vpc_ids) : []
     content {
-      vpc_id = var.vpc_id
+      vpc_id = vpc.value
     }
   }
 

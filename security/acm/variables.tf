@@ -14,6 +14,12 @@ variable "domain_name" {
   default     = null
 }
 
+variable "subject_alternative_names" {
+  description = "A list of subject alternative names (SANs) for the certificate"
+  type        = list(string)
+  default     = []
+}
+
 variable "certificate_body" {
   description = "The certificate body (for imported certificates)"
   type        = string

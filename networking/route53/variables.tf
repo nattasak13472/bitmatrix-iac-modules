@@ -19,10 +19,10 @@ variable "is_private_zone" {
   default     = false
 }
 
-variable "vpc_id" {
-  description = "The VPC ID to associate with a private hosted zone"
-  type        = string
-  default     = null
+variable "vpc_ids" {
+  description = "A list of VPC IDs to associate with a private hosted zone"
+  type        = list(string)
+  default     = []
 }
 
 variable "records" {
